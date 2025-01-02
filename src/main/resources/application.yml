@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: atom-search-service
