@@ -1,11 +1,11 @@
-package com.atom.search;
+package com.atom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class AtomSearchServiceApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(AtomSearchServiceApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(AtomSearchServiceApplication.class, args);
+  }
 }
