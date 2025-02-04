@@ -1,12 +1,12 @@
-package com.atom.controller;
+package com.search.controller;
 
-import com.atom.dto.LocationDTO;
-import com.atom.search.LocationService;
+import com.search.dto.LocationDTO;
+import com.search.service.LocationService;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/locations")
+@RequestMapping("/v1")
 public class LocationController {
 
   private final LocationService locationService;

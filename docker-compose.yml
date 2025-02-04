@@ -9,13 +9,54 @@ services:
       - "5432:5432"
     volumes:
       - data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
   redis:
     image: redis:latest
     container_name: redis
     ports:
       - "6379:6379"
     restart: unless-stopped
+    networks:
+      - microservices-network
+
+  discovery-server:
+    image: dipakg007/discovery-server:latest
+    container_name: discovery-server
+    ports:
+      - "8761:8761"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8761" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - microservices-network
+
+  api-gateway:
+    image: dipakg007/api-gateway:latest
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      discovery-server:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    environment:
+      - SPRING_CLOUD_GATEWAY_DISCOVERY_LOCATOR_ENABLED=true
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://discovery-server:8761/eureka/
+    networks:
+      - microservices-network
 
 volumes:
   data:
     driver: local
+
+networks:
+  microservices-network:
+    driver: bridge

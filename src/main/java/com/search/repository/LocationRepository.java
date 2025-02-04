@@ -1,6 +1,6 @@
-package com.atom.repository;
+package com.search.repository;
 
-import com.atom.entities.Location;
+import com.search.entities.Location;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

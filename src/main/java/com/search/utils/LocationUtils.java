@@ -1,4 +1,4 @@
-package com.atom.utils;
+package com.search.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

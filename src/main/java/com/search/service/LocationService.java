@@ -1,10 +1,10 @@
-package com.atom.search;
+package com.search.service;
 
-import static com.atom.utils.LocationUtils.calculateDistance;
+import static com.search.utils.LocationUtils.calculateDistance;
 
-import com.atom.dto.LocationDTO;
-import com.atom.entities.Location;
-import com.atom.repository.LocationRepository;
+import com.search.dto.LocationDTO;
+import com.search.entities.Location;
+import com.search.repository.LocationRepository;
 import java.util.List;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.io.WKTWriter;
@@ -25,6 +25,7 @@ public class LocationService {
   public List<LocationDTO> findNearby(Double latitude, Double longitude, Double radius) {
     String key = latitude + ":" + longitude + ":" + radius;
     List<LocationDTO> cacheData = redisService.getData(key);
+    //    CommonUtility.sayHello();
     if (!CollectionUtils.isEmpty(cacheData)) return cacheData;
     List<LocationDTO> dbData =
         repository.findNearby(latitude, longitude, radius).stream()

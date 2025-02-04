@@ -1,4 +1,4 @@
-package com.atom.entities;
+package com.search.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

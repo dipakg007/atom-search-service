@@ -1,4 +1,4 @@
-package com.atom.dto;
+package com.search.dto;
 
 import java.io.Serializable;
 import lombok.Data;

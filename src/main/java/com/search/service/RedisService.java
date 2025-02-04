@@ -1,9 +1,9 @@
-package com.atom.search;
+package com.search.service;
 
-import com.atom.dto.LocationDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.search.dto.LocationDTO;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Value;
